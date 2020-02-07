@@ -7,5 +7,7 @@ class  Circle: public Shape
 	long m_rad;
 public:
 	Circle(int midle = 0, long rad = 0, COLOR color = BLUE);
-
+	Circle(Shape tmp);
+	virtual ~Circle();
+	virtual void Identety();
 };

@@ -69,9 +69,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			Rect r1(1, 2, 3, 4);
 			Circle c1(1, 2.2);
-			
+			Shape s1;
 
-		}
+		
 //////////////////////////////////////////////////////////////////////
 
 	//Задание 4.Виртуальные функции.
@@ -84,41 +84,38 @@ int _tmain(int argc, _TCHAR* argv[])
 	//4б) Сделайте метод WhereAmI() виртуальным.
 	//Снова выполните приведенный фрагмент, объясните разницу.
 
-	{
-		Shape s(...);
-		Rect r(...);
-		Circle c(...);
 
 	
 		//Метод какого класса вызывается в следующих строчках???
-		s.WhereAmI();	//	???
-		r.WhereAmI();	//	???
-		c.WhereAmI();	//	???
+		r1.Identety();	//	Rect
+		s1.Identety();	//	Shape
+		c1.Identety();	//	Circle
 		stop
 
 
-		Shape* pShape = &s;
-		Shape* pRect = &r;
-		Shape* pCircle = &c;
-    	pShape->WhereAmI();	//	???
-		pRect->WhereAmI();	//	???
-		pCircle->WhereAmI(); //	???
+		Shape* pShape = &s1;
+		Shape* pRect = &r1;
+		Shape* pCircle = &c1;
+    	pShape->Identety();	//	Shape -  если не virt
+		pRect->Identety();	//	Shape -  если не virt
+		pCircle->Identety(); //	Shape -  если не virt
 		stop
 
 
 		//Заполните ... согласно комментариям
-		Shape& rShape = ...; //псевдоним s
-		Shape& rRect = ...; //псевдоним r
-		Shape& rCircle = ...; //псевдоним c
-    	...WhereAmI();	//вызов посредством rShape	???
-		...WhereAmI();	//вызов посредством	rRect	???
-		...WhereAmI(); //вызов посредством rCircle	???
+		Shape& rShape = s1; //псевдоним s -  если не virt
+		Shape& rRect = r1; //псевдоним r -  если не virt
+		Shape& rCircle = c1; //псевдоним c -  если не virt
+		rShape.Identety();	//	Shape -  если не virt
+		rRect.Identety();	//	Shape -  если не virt 
+		rCircle.Identety(); // Shape-  если не virt 
+
+		//после добавления virt методы вызываются нормально благодаря тпблицы виртуальных функций
 		stop
 	}
 
 
 //////////////////////////////////////////////////////////////////////
-/*
 	//Задание 5.Виртуальные деструкторы.
 	//Модифицируйте классы:
 	//a) введите соответствующие
@@ -139,13 +136,17 @@ int _tmain(int argc, _TCHAR* argv[])
 		//Если Вы считаете, что в приведенном фрагменте чего-то
 		//не хватает - добавьте
 
-		Rect r(<параметры>);
+		Rect r(1,2,3,4);
 		Shape* ar[]={new Shape(r), new Rect(r), new Circle(r), new Circle() };
 		//Вызовите для каждого элемента массива метод WhereAmI()
-	
+		for (size_t i = 0; i < 4; i++)
+		{
+			ar[i]->Identety();
+			delete ar[i];
 
+		}
+		
 	stop
-*/
 
 /*
 	//Задание 6*. В чем заключается отличие 1) и 2)

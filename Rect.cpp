@@ -8,3 +8,13 @@ Rect::Rect(int top, int bot, int left, int right, COLOR color)
 	this->m_right = right;
 	this->m_color = color;
 }
+
+Rect::~Rect()
+{
+	std::cout << "Delete Rect :|...\n";
+}
+
+void Rect::Identety()
+{
+	std::cout << "REECT :|\n";
+}
