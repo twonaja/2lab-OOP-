@@ -5,8 +5,10 @@
 #include "myString.h"
 #include "Rect.h"
 #include "Circle.h"
+#include "GlobalFunction.h"
 #include <iostream>
 #include <tchar.h>
+
 #define	  stop __asm nop
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -66,12 +68,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	//При создании и уничтожении объекта производного типа определите
 	//последовательность вызовов конструкторов и деструкторов базового
 	//и производного классов
-		{
+		/*{
 			Rect r1(1, 2, 3, 4);
 			Circle c1(1, 2.2);
 			Shape s1;
 
-		
+		*/
 //////////////////////////////////////////////////////////////////////
 
 	//Задание 4.Виртуальные функции.
@@ -87,32 +89,32 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	
 		//Метод какого класса вызывается в следующих строчках???
-		r1.Identety();	//	Rect
-		s1.Identety();	//	Shape
-		c1.Identety();	//	Circle
-		stop
+	//	r1.Identety();	//	Rect
+	//	s1.Identety();	//	Shape
+	//	c1.Identety();	//	Circle
+	//	stop
 
 
-		Shape* pShape = &s1;
-		Shape* pRect = &r1;
-		Shape* pCircle = &c1;
-    	pShape->Identety();	//	Shape -  если не virt
-		pRect->Identety();	//	Shape -  если не virt
-		pCircle->Identety(); //	Shape -  если не virt
-		stop
+	//	Shape* pShape = &s1;
+	//	Shape* pRect = &r1;
+	//	Shape* pCircle = &c1;
+ //   	pShape->Identety();	//	Shape -  если не virt
+	//	pRect->Identety();	//	Shape -  если не virt
+	//	pCircle->Identety(); //	Shape -  если не virt
+	//	stop
 
 
-		//Заполните ... согласно комментариям
-		Shape& rShape = s1; //псевдоним s -  если не virt
-		Shape& rRect = r1; //псевдоним r -  если не virt
-		Shape& rCircle = c1; //псевдоним c -  если не virt
-		rShape.Identety();	//	Shape -  если не virt
-		rRect.Identety();	//	Shape -  если не virt 
-		rCircle.Identety(); // Shape-  если не virt 
+	//	//Заполните ... согласно комментариям
+	//	Shape& rShape = s1; //псевдоним s -  если не virt
+	//	Shape& rRect = r1; //псевдоним r -  если не virt
+	//	Shape& rCircle = c1; //псевдоним c -  если не virt
+	//	rShape.Identety();	//	Shape -  если не virt
+	//	rRect.Identety();	//	Shape -  если не virt 
+	//	rCircle.Identety(); // Shape-  если не virt 
 
-		//после добавления virt методы вызываются нормально благодаря тпблицы виртуальных функций
-		stop
-	}
+	//	//после добавления virt методы вызываются нормально благодаря тпблицы виртуальных функций
+	//	stop
+	//}
 
 
 //////////////////////////////////////////////////////////////////////
@@ -136,74 +138,81 @@ int _tmain(int argc, _TCHAR* argv[])
 		//Если Вы считаете, что в приведенном фрагменте чего-то
 		//не хватает - добавьте
 
-		Rect r(1,2,3,4);
-		Shape* ar[]={new Shape(r), new Rect(r), new Circle(r), new Circle() };
-		//Вызовите для каждого элемента массива метод WhereAmI()
-		for (size_t i = 0; i < 4; i++)
-		{
-			ar[i]->Identety();
-			delete ar[i];
+	//	Rect r(1,2,3,4);
+	//	Shape* ar[]={new Shape(r), new Rect(r), new Circle(r), new Circle() };
+	//	//Вызовите для каждого элемента массива метод WhereAmI()
+	//	for (size_t i = 0; i < 4; i++)
+	//	{
+	//		ar[i]->Identety();
+	//		delete ar[i];
 
-		}
-		
-	stop
+	//	}
+	//	
+	//stop
 
-/*
+
 	//Задание 6*. В чем заключается отличие 1) и 2)
-	{
-		Shape* pShapes = new Rect[10];//1)
-		Rect* pRects = new Rect[10];//2)
+	//{
+	//	Shape* pShapes = new Rect[10];//1) Доступ к методам класса, так же virtual будут для Rect
+	//	Rect* pRects = new Rect[10];//2)
+	//	//Попробуйте вызвать метод WhereAmI() для каждого элемента обоих массивов -
+	//	//в чем заключается проблема???
 
-		//Попробуйте вызвать метод WhereAmI() для каждого элемента обоих массивов -
-		//в чем заключается проблема???
+
+	//	//Освободите динамически захваченную память
+	//	delete[] pShapes;
+	//	delete[] pRects;
+	//}
 
 
-		//Освободите динамически захваченную память
-
-	}
-
-*/
 
 //////////////////////////////////////////////////////////////////////
-/*
+
 	//Задание 7.Виртуальные функции и оператор разрешения области видимости. 
-
+/*
 	{
-		Rect r(...);
+		Rect r;
 		Shape* p = &r;	
-		p->WhereAmI();//...
-		stop
-	
-		
-		//4a Оператор разрешения области видимости.
-		//Посредством объекта r и указателя p вызовите виртуальную функцию
-		//WhereAmI()класса Shape
-		
-		
+		p->Identety();//Rect
+		stop;
+
+
+			//4a Оператор разрешения области видимости.
+			//Посредством объекта r и указателя p вызовите виртуальную функцию
+			//WhereAmI()класса Shape
+		p->Shape::Identety();//
+		stop;
 	}
-*/
+	*/
 
 //////////////////////////////////////////////////////////////////////
-/*
+
 	//Задание 8.Чисто виртуальные функции. 
 	//Введите в базовый класс метод void Inflate(int); Подумайте:
 	//можно ли реализовать такой метод для базового класса? => как его нужно объявить.
 	//Реализуйте этот метод для производных классов.
-	{
-		Rect r(...);
-		Shape* p = &r;
-		p->Inflate(5);
-		Circle c(...);
-		p = &c;
-		p->Inflate(5);
-	}
-*/
+	//{
+	//	Rect r;
+	//	Shape* p = &r;
+	//	p->Inflate(5);
+	//	Circle c;
+	//	p = &c;
+	//	p->Inflate(5);
+	//}
+
 
 
 //////////////////////////////////////////////////////////////////////
 	//Задание 9. Создайте глобальную функцию, которая будет принимать любое
 	//количество указателей на строки, а возвращать объект MyString,
 	//в котором строка будет конкатенацией параметров
+	{
+		char str1[] = "Hello";	
+		char str2[] = "World";
+		char str3[] = "Goodbue";
+		concat(str1, str2, str3, nullptr);
+	}
+
 
 ////////////////////////////////////////////////////////////////////////
 /*

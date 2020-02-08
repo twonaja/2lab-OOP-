@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 class MyString
 {
     char* m_pStr;	//строка-член класса

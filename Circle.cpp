@@ -7,12 +7,12 @@ Circle::Circle(int midle, long rad, COLOR color)
 	this->m_color = color;
 }
 
-Circle::Circle(Shape tmp)
-{
-	this->m_rad = 0;
-	this->m_middle = 0;
-	this->m_color = tmp.getColor();
-}
+//Circle::Circle(Shape tmp)
+//{
+//	this->m_rad = 0;
+//	this->m_middle = 0;
+//	this->m_color = tmp.getColor();
+//}
 
 Circle::~Circle()
 {
@@ -22,4 +22,9 @@ Circle::~Circle()
 void Circle::Identety()
 {
 	std::cout << "A Circle :)\n";
+}
+
+void Circle::Inflate(int baf)
+{
+	this->m_rad += baf;
 }

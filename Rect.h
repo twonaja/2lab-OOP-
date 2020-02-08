@@ -8,4 +8,5 @@ public:
 	Rect(int top = 0, int bot = 0, int left = 0, int right = 0, COLOR color = GREEN);
 	virtual ~Rect();
 	virtual void Identety();
+	virtual void Inflate(int baf);
 };

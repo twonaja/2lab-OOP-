@@ -18,3 +18,11 @@ void Rect::Identety()
 {
 	std::cout << "REECT :|\n";
 }
+
+void Rect::Inflate(int baf)
+{
+	this->m_bot += baf;
+	this->m_top += baf;
+	this->m_left += baf;
+	this->m_right += baf;
+}
